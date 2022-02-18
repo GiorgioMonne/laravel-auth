@@ -10,6 +10,12 @@
 
                 <div class="card-body">
 
+                  <div class="bottoni mb-3">
+
+                    <a href="{{route("posts.create")}}"><button type="button" class="btn btn-success">Crea Post</button></a>
+
+                  </div>
+
                     <table class="table">
                         <thead>
                           <tr>
