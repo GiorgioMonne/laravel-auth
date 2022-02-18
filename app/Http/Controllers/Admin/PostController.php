@@ -115,17 +115,19 @@ class PostController extends Controller
             $post->title = $data["title"];
 
             $slug = Str::of("$post->title")->slug('-');
-            $count = 1;
 
-            while(Post::where("slug", $slug)->first()){
-                $slug = Str::of($post->title)->slug('-') . "-{$count}";
-                $count++;
+
+            if($slug != $post->slug){
+                $count = 1;
+
+                while(Post::where("slug", $slug)->first()){
+                    $slug = Str::of($post->title)->slug('-') . "-{$count}";
+                    $count++;
+                }
+                
+                $post->slug = $slug;
             }
-            
-            $post->slug = $slug;
-            $post->title = $data["title"];
         }
-
 
         $post->content = $data["content"];
 
@@ -150,8 +152,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->routs("posts.index");
     }
 }
