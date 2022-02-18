@@ -14,7 +14,8 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <h5>Beenvenuto su Pandora capitano 
+                        {{ Auth::user()->name }}</h5>
                 </div>
             </div>
         </div>
