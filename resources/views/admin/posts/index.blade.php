@@ -36,10 +36,11 @@
                               <a href="{{route("posts.edit", $post->id)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
                               
                               <form action="{{route("posts.destroy", $post->id)}}" method="POST">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" class="btn btn-danger mt-3">Elimina</button>
+                                  @csrf
+                                  @method("DELETE")
+                                  <button type="submit" class="btn btn-danger mt-3">Elimina</button>
                               </form>
+
                             </td>
                           </tr>
                           @endforeach

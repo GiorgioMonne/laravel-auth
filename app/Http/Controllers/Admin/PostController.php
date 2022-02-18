@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    protected $validationRule = [
+        "title" => "required|string|max:100",
+        "content" => "required",
+        "published" => "sometimes|accepted",
+    ];
     /**
      * Display a listing of the resource.
      *
@@ -41,11 +46,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            "title" => "required|string|max:100",
-            "content" => "required",
-            "published" => "sometimes|accepted",
-        ]);
+        $request->validate($this->validationRule);
 
         $data = $request->all();
 
@@ -103,11 +104,7 @@ class PostController extends Controller
      */
     public function update(Request $request,Post $post)
     {
-        $request->validate([
-            "title" => "required|string|max:100",
-            "content" => "required",
-            "published" => "sometimes|accepted",
-        ]);
+        $request->validate($this->validationRule);
 
         $data = $request->all();
 
@@ -156,6 +153,6 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return redirect()->routs("posts.index");
+        return redirect()->route("posts.index");
     }
 }
