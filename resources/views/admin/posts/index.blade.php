@@ -31,7 +31,10 @@
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
                             <td>{{$post->slug}}</td>
-                            <td><a href="{{route("posts.show", $post->id)}}"><button type="button" class="btn btn-info">Info</button></a></td>
+                            <td>
+                              <a href="{{route("posts.show", $post->id)}}"><button type="button" class="btn btn-info">Info</button></a>
+                              <a href="{{route("posts.edit", $post->id)}}"><button type="button" class="btn btn-warning">Modifica</button></a>
+                            </td>
                           </tr>
                           @endforeach
                         </tbody>
